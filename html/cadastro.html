@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - EPT</title>
+  <link rel="icon" type="image/png" href="../img/logo.png">
+  <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+<body>
+  <header>
+    <h1>Energia para Todos (EPT)</h1>
+  </header>
+
+  <main class="signup-container">
+    <section class="signup-box">
+      <h2>Cadastrar-se</h2>
+      <form id="cadastro-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="cadastro-nome" name="name" placeholder="Digite seu nome" required>
+
+        <label for="email">Gmail:</label>
+        <input type="email" id="cadastro-email" name="email" placeholder="Digite seu Gmail" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="cadastro-senha" name="password" placeholder="Digite sua senha" required>
+
+        <button type="submit" class="button">Cadastrar</button>
+      </form>
+      <p class="error" id="cadastro-message"></p>
+    </section>
+  </main>
+
+  <script src="../js/scripts.js"></script>
+  <script>
+    document.getElementById("cadastro-form").addEventListener("submit", cadastro);
+  </script>
+</body>
+</html>

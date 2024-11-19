@@ -1,0 +1,92 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Cabeçalho */
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Título Principal */
+.partners-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: #4CAF50;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Define 3 colunas fixas */
+    gap: 1.5rem; /* Espaçamento entre os elementos */
+    padding: 2rem;
+    justify-items: center;
+}
+/* Caixas de Parceiros */
+.partner-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    max-width: 300px;
+}
+
+/* Sombreamento e Animação */
+.partner-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.partner-box h3 {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.partner-box p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Botão Voltar */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 0.8rem 1.5rem;
+    background: #333;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #555;
+}

@@ -1,0 +1,143 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/fundo.png'); /* Certifique-se do caminho correto */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    height: 100vh;
+    overflow: hidden; /* Remove barra de rolagem */
+    display: flex;
+    flex-direction: column;
+
+    /* Fundo escurecido */
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Cabeçalho */
+header {
+    position: relative;
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Botão de Voltar */
+.button-back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-back:hover {
+    background: #555;
+}
+
+/* Container Esqueci a Senha */
+.forgot-password-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: calc(100vh - 140px);
+}
+
+.forgot-password-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem 3rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.forgot-password-box:hover {
+    transform: scale(1.02);
+}
+
+.forgot-password-box h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #4CAF50;
+}
+
+.forgot-password-box p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.forgot-password-box form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #333;
+}
+
+.forgot-password-box form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.forgot-password-box form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Botão Enviar */
+.button-send {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-send:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+/* Rodapé */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+}

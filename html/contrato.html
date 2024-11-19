@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratos</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/contrato.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Contratos</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="voltarPagina()">Voltar</button>
+
+        <section class="search-section">
+            <input type="text" id="searchInput" placeholder="Pesquisar contratos por cliente/parceiro..." />
+            <button class="btn" id="searchBtn">Pesquisar</button>
+        </section>
+
+        <section class="contract-section">
+            <h2>Contratos Ativos</h2>
+            <table id="activeContractsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente/Parceiro</th>
+                        <th>Data de Início</th>
+                        <th>Data de Vencimento</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Empresa Solar Ltda.</td>
+                        <td>01/01/2024</td>
+                        <td>01/01/2025</td>
+                        <td>Ativo</td>
+                        <td><a href="detalhes-contrato.html" class="btn">Visualizar</a> <button class="btn btn-edit">Editar</button></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>João Silva</td>
+                        <td>15/02/2024</td>
+                        <td>15/02/2025</td>
+                        <td>Ativo</td>
+                        <td><a href="detalhes-contrato.html" class="btn">Visualizar</a> <button class="btn btn-edit">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="contract-section">
+            <h2>Contratos Históricos</h2>
+            <table id="historicContractsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente/Parceiro</th>
+                        <th>Data de Início</th>
+                        <th>Data de Vencimento</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>003</td>
+                        <td>Empresa Energia ABC</td>
+                        <td>01/01/2023</td>
+                        <td>01/01/2024</td>
+                        <td>Encerrado</td>
+                        <td><a href="detalhes-contrato.html" class="btn">Visualizar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Energia Sustentável. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function voltarPagina() {
+            window.history.back();
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const activeContractsTable = document.getElementById('activeContractsTable').getElementsByTagName('tbody')[0];
+            const historicContractsTable = document.getElementById('historicContractsTable').getElementsByTagName('tbody')[0];
+        
+            filterTable(activeContractsTable, searchInput);
+            filterTable(historicContractsTable, searchInput);
+        });
+        
+        function filterTable(tableBody, searchValue) {
+            const rows = tableBody.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let match = false;
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].innerText.toLowerCase().includes(searchValue)) {
+                        match = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = match ? '' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/fundo.png'); /* Caminho da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+  }
+  
+  header {
+    background-color: rgba(0, 77, 64, 0.8); /* Fundo com transparência */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    margin: 0 auto;
+  }
+  
+  .about-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo com transparência */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%; /* Garante que o conteúdo use toda a largura até o máximo permitido */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #004d40;
+  }
+  
+  p, ul {
+    margin-bottom: 15px;
+    text-align: justify; /* Justifica o texto para melhor aparência */
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #00695c;
+  }
+  

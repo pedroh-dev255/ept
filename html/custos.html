@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financiamento</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/custos.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Opções de Financiamento</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="voltarPagina()">Voltar</button>
+
+        <section class="opcoes-financiamento">
+            <h2>Detalhes sobre as Opções de Financiamento</h2>
+            <ul>
+                <li><strong>Financiamento Padrão:</strong> Parcelas fixas em até 24 meses, com taxa de juros de 1.2% ao mês.</li>
+                <li><strong>Financiamento Flexível:</strong> Parcelas ajustáveis em até 36 meses, com taxas de juros variáveis de acordo com o perfil do cliente.</li>
+                <li><strong>Financiamento Subsidiado:</strong> Opção para clientes com renda de até R$ 3.000, com juros reduzidos a 0.8% ao mês, sujeito à aprovação.</li>
+            </ul>
+        </section>
+
+        <section class="calculo-parcelas">
+            <h2>Simulador de Cálculo de Parcelas</h2>
+            <form id="calculoForm">
+                <label for="valorFinanciamento">Valor do Financiamento (R$):</label>
+                <input type="number" id="valorFinanciamento" name="valorFinanciamento" required>
+                
+                <label for="parcelas">Número de Parcelas:</label>
+                <select id="parcelas" name="parcelas">
+                    <option value="12">12 meses</option>
+                    <option value="24">24 meses</option>
+                    <option value="36">36 meses</option>
+                </select>
+                
+                <button type="submit" class="btn">Calcular</button>
+            </form>
+            <div id="resultadoParcelas" class="resultado"></div>
+        </section>
+
+        <section class="historico-financiamentos">
+            <h2>Histórico de Financiamentos Aprovados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Valor Financiado (R$)</th>
+                        <th>Parcelas</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>João Silva</td>
+                        <td>R$ 20,000</td>
+                        <td>24</td>
+                        <td>Aprovado</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Maria Oliveira</td>
+                        <td>R$ 15,000</td>
+                        <td>12</td>
+                        <td>Aprovado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="documentos-necessarios">
+            <h2>Documentos Necessários</h2>
+            <ul>
+                <li>Cópia do RG e CPF</li>
+                <li>Comprovante de residência atualizado (últimos 3 meses)</li>
+                <li>Comprovante de renda (holerite ou declaração de imposto de renda)</li>
+                <li>Declaração de situação cadastral do CPF (obtida no site da Receita Federal)</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Energia Para Todos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function voltarPagina() {
+            window.history.back();
+        }
+
+        document.getElementById('calculoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const valorFinanciamento = parseFloat(document.getElementById('valorFinanciamento').value);
+            const parcelas = parseInt(document.getElementById('parcelas').value);
+
+            let taxaJuros;
+            if (parcelas === 12) {
+                taxaJuros = 1.2; // 1.2% ao mês
+            } else if (parcelas === 24) {
+                taxaJuros = 1.2; // 1.2% ao mês
+            } else if (parcelas === 36) {
+                taxaJuros = 1.5; // 1.5% ao mês
+            }
+
+            const parcelaMensal = (valorFinanciamento * Math.pow(1 + (taxaJuros / 100), parcelas)) / parcelas;
+
+            const resultadoDiv = document.getElementById('resultadoParcelas');
+            resultadoDiv.innerHTML = `
+                <p>Valor da parcela mensal: <strong>R$ ${parcelaMensal.toFixed(2)}</strong></p>
+                <p>Taxa de juros aplicada: <strong>${taxaJuros}% ao mês</strong></p>
+            `;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Projetos</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/proj.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Projetos</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="voltarPagina()">Voltar</button>
+
+        <section class="monitoramento-section">
+            <h2>Monitoramento de Instalações</h2>
+            <div class="project-card">
+                <h3>Projeto: Instalação Solar Residencial - Cliente João Silva</h3>
+                <p>Status: Operacional</p>
+                <p>Produção Atual: 5.2 kWh/dia</p>
+                <p>Data de Instalação: 15/02/2024</p>
+                <button class="btn btn-detalhes">Ver Detalhes</button>
+            </div>
+            <div class="project-card">
+                <h3>Projeto: Instalação de Microgrid - Empresa ABC</h3>
+                <p>Status: Em manutenção</p>
+                <p>Produção Atual: 12.7 kWh/dia</p>
+                <p>Data de Instalação: 10/01/2024</p>
+                <button class="btn btn-detalhes">Ver Detalhes</button>
+            </div>
+        </section>
+
+        <section class="notificacoes-section">
+            <h2>Notificações de Manutenções</h2>
+            <div class="notification">
+                <p>Manutenção preventiva necessária para o projeto "Instalação Solar Residencial - Cliente João Silva". Data sugerida: 20/09/2024.</p>
+            </div>
+            <div class="notification">
+                <p>Manutenção corretiva agendada para o projeto "Instalação de Microgrid - Empresa ABC". Data: 25/09/2024.</p>
+            </div>
+        </section>
+
+        <section class="historico-section">
+            <h2>Histórico de Manutenções</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Projeto</th>
+                        <th>Data da Manutenção</th>
+                        <th>Tipo</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Instalação Solar Residencial - Cliente João Silva</td>
+                        <td>10/06/2024</td>
+                        <td>Preventiva</td>
+                        <td>Verificação de conectores e inversores. Tudo em ordem.</td>
+                    </tr>
+                    <tr>
+                        <td>Instalação de Microgrid - Empresa ABC</td>
+                        <td>15/07/2024</td>
+                        <td>Corretiva</td>
+                        <td>Substituição de painel defeituoso.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Energia Para Todos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function voltarPagina() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* Estilo Global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #4CAF50, #8BC34A); /* Fundo com gradiente */
+    height: 100vh; /* Garante que a altura seja sempre 100% da tela */
+    overflow: hidden; /* Remove a barra de rolagem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* Cabeçalho */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Transparência para destaque */
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+/* Container de Cadastro */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.signup-box {
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco semitransparente */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: #333;
+}
+
+.signup-box h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #4CAF50;
+}
+
+.signup-box form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+}
+
+.signup-box form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-box form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.signup-box .button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.signup-box .button:hover {
+    background: #45a049;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - EPT</title>
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Energia para Todos (EPT)</h1>
+    <nav>
+      <ul>
+        <li><a href="./html/contato.html">Contato</a></li>
+        <li><a href="./html/sobrenos.html">Sobre Nós</a></li>
+        <li><a href="./html/parceiros.html">Parceiros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="login-container">
+    <section class="login-box">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="email">Email:</label>
+        <input type="email" id="login-email" placeholder="Digite seu email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+
+        <button type="submit" class="button">Entrar</button>
+      </form>
+      <p class="error" id="login-message"></p>
+      <p>Não tem uma conta? <a href="./html/cadastro.html">Registre-se</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Energia para Todos (EPT). Todos os direitos reservados.</p>
+  </footer>
+  <script src="./js/scripts.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", login);
+  </script>
+</body>
+</html>

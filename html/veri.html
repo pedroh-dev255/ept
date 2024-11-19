@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Aprovação</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/veri.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Verificar Aprovação</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="voltarPagina()">Voltar</button>
+
+        <section class="simulador-section">
+            <h2>Simulador de Aprovação</h2>
+            <form id="approvalForm">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+                
+                <label for="renda">Renda Mensal (R$):</label>
+                <input type="number" id="renda" name="renda" required>
+                
+                <label for="valorContrato">Valor do Contrato (R$):</label>
+                <input type="number" id="valorContrato" name="valorContrato" required>
+                
+                <button type="submit" class="btn">Verificar Aprovação</button>
+            </form>
+            <div id="resultado" class="resultado"></div>
+        </section>
+
+        <section class="status-section">
+            <h2>Status de Propostas e Contratos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Proposta</th>
+                        <th>Status</th>
+                        <th>Detalhes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Contrato de Instalação - João Silva</td>
+                        <td>Pendente de Assinatura</td>
+                        <td><button class="btn-detalhes">Visualizar</button></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Proposta de Parceria - Empresa ABC</td>
+                        <td>Aprovado</td>
+                        <td><button class="btn-detalhes">Visualizar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Energia Sustentável. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function voltarPagina() {
+            window.history.back();
+        }
+
+        document.getElementById('approvalForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const renda = parseFloat(document.getElementById('renda').value);
+            const valorContrato = parseFloat(document.getElementById('valorContrato').value);
+
+            // Simulação de aprovação simples
+            const limiteAprovacao = renda * 10; // Exemplo: limite de contrato é 10x a renda mensal
+
+            const resultadoDiv = document.getElementById('resultado');
+            if (valorContrato <= limiteAprovacao) {
+                resultadoDiv.innerHTML = `<p>Parabéns, ${nome}! Sua proposta foi <strong>aprovada</strong>.</p>`;
+                resultadoDiv.style.color = 'green';
+            } else {
+                resultadoDiv.innerHTML = `<p>Desculpe, ${nome}. Sua proposta foi <strong>rejeitada</strong>. O valor do contrato excede seu limite de aprovação.</p>`;
+                resultadoDiv.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

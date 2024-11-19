@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Consumo Energético</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/simulador.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Simulador de Consumo Energético</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="voltarPagina()">Voltar</button>
+
+        <section class="simulador-section">
+            <h2>Preencha os dados da residência</h2>
+            <form id="simuladorForm">
+                <label for="area">Área da residência (m²):</label>
+                <input type="number" id="area" name="area" required>
+
+                <label for="eletrodomesticos">Quantidade de eletrodomésticos:</label>
+                <input type="number" id="eletrodomesticos" name="eletrodomesticos" required>
+
+                <label for="horas">Horas de uso diário (em média):</label>
+                <input type="number" id="horas" name="horas" required>
+
+                <button type="submit" class="btn">Calcular Consumo</button>
+            </form>
+            <div id="resultado" class="resultado"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Energia Para Todos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function voltarPagina() {
+            window.history.back();
+        }
+
+        document.getElementById('simuladorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const area = parseFloat(document.getElementById('area').value);
+            const eletrodomesticos = parseInt(document.getElementById('eletrodomesticos').value);
+            const horas = parseFloat(document.getElementById('horas').value);
+
+            // Cálculo de consumo energético estimado (simples)
+            const consumoEstimado = (area * 0.15 + eletrodomesticos * 0.1) * horas;
+
+            // Sugestão de sistemas solares e seus valores
+            let sugestao;
+            if (consumoEstimado < 50) {
+                sugestao = {
+                    sistema: "Sistema Solar Pequeno",
+                    valor: "R$ 15,000"
+                };
+            } else if (consumoEstimado < 100) {
+                sugestao = {
+                    sistema: "Sistema Solar Médio",
+                    valor: "R$ 25,000"
+                };
+            } else {
+                sugestao = {
+                    sistema: "Sistema Solar Grande",
+                    valor: "R$ 40,000"
+                };
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <h3>Resultado da Simulação</h3>
+                <p>Consumo estimado: <strong>${consumoEstimado.toFixed(2)} kWh/dia</strong></p>
+                <p>Sugestão de instalação: <strong>${sugestao.sistema}</strong></p>
+                <p>Valor estimado do sistema: <strong>${sugestao.valor}</strong></p>
+            `;
+        });
+    </script>
+</body>
+</html>

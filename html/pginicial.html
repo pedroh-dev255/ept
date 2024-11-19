@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel da Empresa</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/pginicial.css">
+    <script src="../js/auth.js"></script>
+    <script>
+        checkLoginFrontend();
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Painel da Empresa</div>
+        <nav>
+            <ul>
+                <li><a href="novocliente.html">Cadastrar Novo Cliente</a></li>
+                <li><a href="veri.html">Verificar aprovação</a></li>
+                <li><a href="custos.html">Financiamento</a></li>
+                <li><a href="parceiros.html">Parcerias</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li>
+                    <button class="a" id="logout-button">Sair</button>
+                    <script>
+                        // Função de logout
+                        function logout() {
+                            sessionStorage.removeItem("isLoggedIn"); // Remove o estado de login
+                            window.location.href = "../index.html"; // Redireciona para a página de login
+                        }
+                
+                        // Adiciona evento ao botão
+                        document.getElementById("logout-button").addEventListener("click", logout);
+                    </script>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="overview">
+            <h2>Visão Geral</h2>
+            <p>Resumo das operações e status dos projetos.</p>
+            <div class="cards">
+                <div class="card">
+                    <h3>Projetos Ativos</h3>
+                    <p>10 projetos em andamento</p>
+                </div>
+                <div class="card">
+                    <h3>Produção Total</h3>
+                    <p>200 MWh gerados</p>
+                </div>
+                <div class="card">
+                    <h3>Parcerias Recentes</h3>
+                    <p>5 novos parceiros este mês</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reports">
+            <h2>Contratos</h2>
+            <p>Acesse os contratos detalhados.</p>
+            <a href="contrato.html" class="primary-button">Visualizar</a>
+        </section>
+
+        <section class="project-management">
+            <h2>Gerenciar Projetos</h2>
+            <p>Monitoramento da manutenção..</p>
+            <a href="proj.html" class="primary-button">Visualizar</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Energia Para Todos. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
