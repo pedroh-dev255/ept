@@ -22,3 +22,14 @@ CREATE TABLE cliente (
     planideal int NOT NULL,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE financiamento (
+    id INT AUTO_INCREMENT,
+    id_cliente INT NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    data_vencimento DATE NOT NULL,
+    parcelamento int NOT NULL,
+    status int NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id)
+);

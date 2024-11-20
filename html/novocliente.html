@@ -8,6 +8,46 @@
     <link rel="stylesheet" href="../css/veri.css">
     <script src="../js/auth.js"></script>
     <script>
+        function redirect(url) {
+            window.location.href = url;
+        }
+        
+        function showMessage(elementId, message, type = "error") {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = message;
+                element.className = type; // Adiciona a classe com o tipo da mensagem, como "success" ou "error".
+            }
+        }
+        window.cadastrocliente = async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const cpf = document.getElementById("cpf").value;
+        const tel = document.getElementById("tel").value;
+        const endereco = document.getElementById("endereco").value;
+        const plano = document.getElementById("plano").value;
+
+        const response = await fetch(`${apiBaseUrl}index.php?route=cadastro_cliente`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, email, cpf, tel, endereco, plano }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showMessage("cadastrocl-message", "Cadastro do cliente realizado com sucesso!", "success");
+            setTimeout(() => redirect("./pginicial.html"), 1000);
+        } else {
+            showMessage("cadastrocl-message", data.error);
+            console.log("erro: "+ data.error);
+        }
+        };
+
+    </script>
+    <script>
         checkLoginFrontend();
     </script>
 </head>
@@ -46,7 +86,7 @@
 
                 <button type="submit" class="btn">Cadastrar Cliente</button>
             </form>
-            <div id="resultado" class="resultado"></div>
+            <p class="error" id="cadastrocl-message"></p>
         </section>
         
     </main>
@@ -160,14 +200,14 @@
     <footer>
         <p>&copy; 2024 Energia Sustentável. Todos os direitos reservados.</p>
     </footer>
-    <script src="../js/scripts.js"></script>
+    
 
     <script>
         function voltarPagina() {
             window.history.back();
         }
         
-        document.getElementById("cadcli-form").addEventListener("submit", cadastro_cliente);
+        document.getElementById("cadcli-form").addEventListener("submit", cadastrocliente);
     </script>
 </body>
 </html>

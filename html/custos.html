@@ -6,7 +6,8 @@
     <title>Financiamento</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../css/custos.css">
-    <script src="../js/auth.js"></script>
+    <script src="../js/scripts.js"></script>
+    <script src="../js/financiamento.js"></script>
     <script>
         checkLoginFrontend();
     </script>
@@ -29,20 +30,43 @@
 
         <section class="calculo-parcelas">
             <h2>Simulador de Cálculo de Parcelas</h2>
-            <form id="calculoForm">
-                <label for="valorFinanciamento">Valor do Financiamento (R$):</label>
-                <input type="number" id="valorFinanciamento" name="valorFinanciamento" required>
+            <form id="cadfin-form">
+                <label for="cliente">Selecione um cliente</label>
+                <select id="cliente" name="cliente" required>
+                    <option value="">Selecione um cliente</option>
+                </select>
+
+                <label for="tipoFinanciamento">Plano de sistema solar:</label>
+                <input disabled type="text" id="tipoFinanciamento" name="tipoFinanciamento" required>
                 
+                <label for="valorFinanciamento">Valor do Financiamento (R$):</label>
+                <input type="hidden" id="valorFinanciamentoMemo" name="valorFinanc" required>
+                <input disabled type="text" id="valorFinanciamento" name="valorFinanciamento" required>
+
                 <label for="parcelas">Número de Parcelas:</label>
-                <select id="parcelas" name="parcelas">
+                <select id="parcelas" name="parcelas" required>
+                    <option value="">Selecione as Parcelas</option>
                     <option value="12">12 meses</option>
                     <option value="24">24 meses</option>
                     <option value="36">36 meses</option>
                 </select>
-                
-                <button type="submit" class="btn">Calcular</button>
+
+                <label for="data">Data de vencimento:</label>
+                <select id="data" name="data_vem">
+                    <option value="5">Todo dia 5</option>
+                    <option value="10">Todo dia 10</option>
+                    <option value="20">Todo dia 20</option>
+                </select>
+                <br><br>
+
+                Valor total da parcela: <span id="valorTotalParcela">R$ 0,00</span> <br><br>
+                Taxa de juros: <span id="taxaJuros">0%</span><br><br>
+                Valor total do financiamento: <span id="valorTotalFinanciamento">R$ 0,00</span>
+                <input type="hidden" id="valortotal" name="valortotal" required>
+                <br><br><br>
+                <button type="submit" class="btn">Cadastrar</button>
             </form>
-            <div id="resultadoParcelas" class="resultado"></div>
+            <p class="error" id="cadastrofin-message"></p>
         </section>
 
         <section class="historico-financiamentos">
@@ -57,21 +81,8 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>João Silva</td>
-                        <td>R$ 20,000</td>
-                        <td>24</td>
-                        <td>Aprovado</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Maria Oliveira</td>
-                        <td>R$ 15,000</td>
-                        <td>12</td>
-                        <td>Aprovado</td>
-                    </tr>
+                <tbody id="historicoFinanciamentosBody">
+                    <!-- Os dados do banco de dados serão inseridos aqui -->
                 </tbody>
             </table>
         </section>
@@ -95,28 +106,13 @@
             window.history.back();
         }
 
-        document.getElementById('calculoForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const valorFinanciamento = parseFloat(document.getElementById('valorFinanciamento').value);
-            const parcelas = parseInt(document.getElementById('parcelas').value);
-
-            let taxaJuros;
-            if (parcelas === 12) {
-                taxaJuros = 1.2; // 1.2% ao mês
-            } else if (parcelas === 24) {
-                taxaJuros = 1.2; // 1.2% ao mês
-            } else if (parcelas === 36) {
-                taxaJuros = 1.5; // 1.5% ao mês
-            }
-
-            const parcelaMensal = (valorFinanciamento * Math.pow(1 + (taxaJuros / 100), parcelas)) / parcelas;
-
-            const resultadoDiv = document.getElementById('resultadoParcelas');
-            resultadoDiv.innerHTML = `
-                <p>Valor da parcela mensal: <strong>R$ ${parcelaMensal.toFixed(2)}</strong></p>
-                <p>Taxa de juros aplicada: <strong>${taxaJuros}% ao mês</strong></p>
-            `;
+        // Adiciona o evento de mudança ao select
+        document.getElementById("cliente").addEventListener("change", function () {
+            const clienteId = this.value;
+            buscarValorFinanciamento(clienteId);
         });
+        document.getElementById("parcelas").addEventListener("change", calcularValores);
+        document.getElementById("cadfin-form").addEventListener("submit", cadastrofinanciamento);
     </script>
 </body>
 </html>

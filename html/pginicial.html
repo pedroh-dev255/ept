@@ -6,7 +6,7 @@
     <title>Painel da Empresa</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../css/pginicial.css">
-    <script src="../js/auth.js"></script>
+    <script src="../js/pginicial.js"></script>
     <script>
         checkLoginFrontend();
     </script>
@@ -17,18 +17,19 @@
         <nav>
             <ul>
                 <li><a href="novocliente.html">Cadastrar Novo Cliente</a></li>
-                <li><a href="veri.html">Verificar aprovação</a></li>
                 <li><a href="custos.html">Financiamento</a></li>
+                <li><a href="veri.html">Verificar aprovação</a></li>
                 <li><a href="parceiros.html">Parcerias</a></li>
                 <li><a href="#">Configurações</a></li>
                 <li>
                     <button class="a" id="logout-button">Sair</button>
                     <script>
                         // Função de logout
+                        /*
                         function logout() {
                             sessionStorage.removeItem("isLoggedIn"); // Remove o estado de login
                             window.location.href = "../index.html"; // Redireciona para a página de login
-                        }
+                        }*/
                 
                         // Adiciona evento ao botão
                         document.getElementById("logout-button").addEventListener("click", logout);
@@ -44,8 +45,16 @@
             <p>Resumo das operações e status dos projetos.</p>
             <div class="cards">
                 <div class="card">
-                    <h3>Projetos Ativos</h3>
-                    <p>10 projetos em andamento</p>
+                    <a href="./clientes.html">
+                        <h3>Clientes</h3>
+                        <p>Numero de Clientes : <span id="clientes">0</span></p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="veri.html">
+                        <h3>Financiamentos pendentes</h3>
+                        <p><span id="projetos">0</span> Financiamentos Pendentes</p>
+                    </a>
                 </div>
                 <div class="card">
                     <h3>Produção Total</h3>

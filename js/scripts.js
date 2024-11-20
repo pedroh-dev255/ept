@@ -1,5 +1,23 @@
 const apiBaseUrl = "http://localhost/siteglobal/API/"; // Altere conforme necessário
 
+
+// Frontend: Verifica login no Session Storage
+function checkLoginFrontend() {
+  if (!sessionStorage.getItem("isLoggedIn")) {
+    window.location.href = "../index.html";
+  }
+}
+
+// Backend: Verifica login com requisição ao servidor
+async function checkLoginBackend(route) {
+  const response = await fetch(`${apiBaseUrl}/?route=${route}`);
+  if (!response.ok) {
+    window.location.href = "../index.html";
+  }
+}
+
+
+
 // Função para exibir mensagens de erro ou sucesso
 function showMessage(elementId, message, type = "error") {
   const element = document.getElementById(elementId);
@@ -84,23 +102,12 @@ async function login(event) {
     }
   }
 
-  async function logout() {
-    const response = await fetch(`${apiBaseUrl}/?route=logout`, {
-      method: "POST",
-    });
   
-    if (response.ok) {
-      // Redireciona para a página de login após deslogar
-      window.location.href = "index.html";
-    } else {
-      alert("Erro ao deslogar. Tente novamente.");
-    }
-  }
 
 
 
 // Função para cadastro
-async function cadastro_cliente(event) {
+async function cadastrocliente(event) {
   event.preventDefault();
 
   const nome = document.getElementById("nome").value;
@@ -119,14 +126,9 @@ async function cadastro_cliente(event) {
   const data = await response.json();
 
   if (response.ok) {
-    showMessage("cadastro-message", "Cadastro do cliente realizado com sucesso!", "success");
+    showMessage("cadastrocl-message", "Cadastro do cliente realizado com sucesso!", "success");
     setTimeout(() => redirect("../index.html"), 1000);
   } else {
-    showMessage("cadastro-message", data.error);
+    showMessage("cadastrocl-message", data.error);
   }
 }
-
-
-  
-  // Adiciona evento ao botão
-  document.getElementById("logout-button").addEventListener("click", logout);

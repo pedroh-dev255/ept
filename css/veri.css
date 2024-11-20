@@ -89,6 +89,20 @@ select {
     font-size: 14px;
 }
 
+.btn-negar {
+    padding: 10px 15px;
+    background-color: #dd3232;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn-negar:hover {
+    opacity: 0.9;
+}
+
 .btn:hover {
     opacity: 0.9;
 }
@@ -136,3 +150,4 @@ footer {
     background-color: #343a40;
     color: white;
 }
+
